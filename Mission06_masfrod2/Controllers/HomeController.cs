@@ -40,9 +40,17 @@ namespace Mission06_masfrod2.Controllers
         [HttpPost]
         public IActionResult AddMovie(AddMovieResponse am)
         {
-            context.Add(am);
-            context.SaveChanges();
-            return View("Confirmation", am);
+            if (ModelState.IsValid)
+            {
+                context.Add(am);
+                context.SaveChanges();
+                return View("Confirmation", am);
+            }
+
+            else
+            {
+                return View("AddMovie");
+            }
         }
 
         public IActionResult Privacy()
