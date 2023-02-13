@@ -22,7 +22,7 @@ namespace Mission06_masfrod2.Models
         [Required]
         public string Rating { get; set; }
 
-        public bool Edited { get; set; }
+        public bool? Edited { get; set; }
 
         public string LentTo { get; set; }
 

@@ -49,7 +49,7 @@ namespace Mission06_masfrod2.Controllers
 
             else
             {
-                return View("AddMovie");
+                return View();
             }
         }
 

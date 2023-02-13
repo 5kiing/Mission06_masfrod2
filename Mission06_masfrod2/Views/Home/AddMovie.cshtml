@@ -29,7 +29,7 @@
 
         <label asp-for="Edited">Edited:</label>
         <select asp-for="Edited">
-            <option value="">N/A</option>
+            <option></option>
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select><br />
@@ -41,5 +41,7 @@
         <input asp-for="Notes" /><br />
 
         <button type="submit">Submit</button>
+
+        <div asp-validation-summary="All"></div>
     </form>
 </div>
