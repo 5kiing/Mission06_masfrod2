@@ -1,10 +1,15 @@
-﻿@{
+﻿@*// Author: Mason Frodsham masfrod2*@
+@*// Mission 6 Assignment*@
+
+@{
     ViewData["Title"] = "Add Movie";
     ViewData["Head"] = "Add a Movie to the Collection";
 }
 
+@*get movie model for form to refer to*@
 @model Mission06_masfrod2.Models.AddMovieResponse
 
+@*Movie addition form*@
 <div>
     <form method="post">
         <label asp-for="Category">Category:</label>

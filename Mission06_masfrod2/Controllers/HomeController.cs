@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// Author: Mason Frodsham masfrod2
+// Mission 6 Assignment
+
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Mission06_masfrod2.Models;
 using System;
@@ -12,6 +15,8 @@ namespace Mission06_masfrod2.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        
+        // Includes add movie model
         private AddMovieContext context { get; set; }
 
         //constructor
@@ -31,15 +36,18 @@ namespace Mission06_masfrod2.Controllers
             return View();
         }
 
+        // get movie form
         [HttpGet]
         public IActionResult AddMovie()
         {
             return View();
         }
 
+        // post movie form to database
         [HttpPost]
         public IActionResult AddMovie(AddMovieResponse am)
         {
+            // data validation if statement
             if (ModelState.IsValid)
             {
                 context.Add(am);

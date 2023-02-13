@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿// Author: Mason Frodsham masfrod2
+// Mission 6 Assignment
+
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +21,7 @@ namespace Mission06_masfrod2.Models
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            // seeded data
             mb.Entity<AddMovieResponse>().HasData(
                 new AddMovieResponse
                 {

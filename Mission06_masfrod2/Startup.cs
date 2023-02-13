@@ -1,3 +1,6 @@
+// Author: Mason Frodsham masfrod2
+// Mission 6 Assignment
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +30,7 @@ namespace Mission06_masfrod2
         {
             services.AddControllersWithViews();
 
+            // this allows us to connect to our database
             services.AddDbContext<AddMovieContext>(options =>
            {
                options.UseSqlite(Configuration["ConnectionStrings:Connection"]);
@@ -53,6 +57,7 @@ namespace Mission06_masfrod2
 
             app.UseAuthorization();
 
+            // included endpoints 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
