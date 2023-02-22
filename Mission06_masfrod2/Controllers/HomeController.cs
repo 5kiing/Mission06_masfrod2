@@ -90,9 +90,19 @@ namespace Mission06_masfrod2.Controllers
         [HttpPost]
         public IActionResult Edit (AddMovieResponse am)
         {
-            context.Update(am);
-            context.SaveChanges();
-            return RedirectToAction("ListMovies");
+            // data validation if statement
+            if (ModelState.IsValid)
+            {
+                context.Update(am);
+                context.SaveChanges();
+                return RedirectToAction("ListMovies");
+            }
+            else
+            {
+                ViewBag.Category = context.Category.ToList();
+
+                return View("AddMovie", am);
+            }
         }
 
         // Get movie ID to delete
