@@ -12,8 +12,17 @@
 @*Movie addition form*@
 <div>
     <form method="post">
-        <label asp-for="Category">Category:</label>
-        <input asp-for="Category" /><br />
+
+        @*create dropdown list of movie categories*@
+
+        <label asp-for="CategoryId">Category:</label>
+        <select asp-for="CategoryId">
+            <option value="">Select a Category</option>
+            @foreach (Category c in ViewBag.Category)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        </select><br />
 
         <label asp-for="Title">Title:</label>
         <input asp-for="Title" /><br />

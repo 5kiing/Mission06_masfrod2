@@ -9,7 +9,7 @@ using Mission06_masfrod2.Models;
 namespace Mission06_masfrod2.Migrations
 {
     [DbContext(typeof(AddMovieContext))]
-    [Migration("20230213230708_Initial")]
+    [Migration("20230221221459_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,9 +24,8 @@ namespace Mission06_masfrod2.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -55,13 +54,15 @@ namespace Mission06_masfrod2.Migrations
 
                     b.HasKey("MovieId");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Responses");
 
                     b.HasData(
                         new
                         {
                             MovieId = 1,
-                            Category = "Sports",
+                            CategoryId = 3,
                             Director = "Boaz Yakin",
                             Edited = false,
                             LentTo = "Wife",
@@ -73,7 +74,7 @@ namespace Mission06_masfrod2.Migrations
                         new
                         {
                             MovieId = 2,
-                            Category = "Action/Adventure",
+                            CategoryId = 2,
                             Director = "Gore Verbinski",
                             Edited = false,
                             LentTo = "",
@@ -85,7 +86,7 @@ namespace Mission06_masfrod2.Migrations
                         new
                         {
                             MovieId = 3,
-                            Category = "Sci-fi/Adventure",
+                            CategoryId = 4,
                             Director = "Christopher Nolan",
                             Edited = false,
                             LentTo = "",
@@ -94,6 +95,56 @@ namespace Mission06_masfrod2.Migrations
                             Title = "Interstellar",
                             Year = (ushort)2014
                         });
+                });
+
+            modelBuilder.Entity("Mission06_masfrod2.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Horror"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Action/Adventure"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Sports"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CategoryName = "Sci-Fi/Adventure"
+                        },
+                        new
+                        {
+                            CategoryId = 5,
+                            CategoryName = "Thriller"
+                        });
+                });
+
+            modelBuilder.Entity("Mission06_masfrod2.Models.AddMovieResponse", b =>
+                {
+                    b.HasOne("Mission06_masfrod2.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

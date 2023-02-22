@@ -18,15 +18,24 @@ namespace Mission06_masfrod2.Models
         }
 
         public DbSet<AddMovieResponse> Responses { get; set; }
-
+        public DbSet<Category> Category { get; set; }
         protected override void OnModelCreating(ModelBuilder mb)
         {
             // seeded data
+
+            mb.Entity<Category>().HasData(
+                new Category { CategoryId = 1, CategoryName = "Horror" },
+                new Category { CategoryId = 2, CategoryName = "Action/Adventure" },
+                new Category { CategoryId = 3, CategoryName = "Sports" },
+                new Category { CategoryId = 4, CategoryName = "Sci-Fi/Adventure" },
+                new Category { CategoryId = 5, CategoryName = "Thriller" }
+            );
+
             mb.Entity<AddMovieResponse>().HasData(
                 new AddMovieResponse
                 {
                     MovieId = 1,
-                    Category = "Sports",
+                    CategoryId = 3,
                     Title = "Remeber the Titans",
                     Year = 2000,
                     Director = "Boaz Yakin",
@@ -38,7 +47,7 @@ namespace Mission06_masfrod2.Models
                 new AddMovieResponse
                 {
                     MovieId = 2,
-                    Category = "Action/Adventure",
+                    CategoryId = 2,
                     Title = "Pirates of the Caribbean",
                     Year = 2003,
                     Director = "Gore Verbinski",
@@ -50,7 +59,7 @@ namespace Mission06_masfrod2.Models
                 new AddMovieResponse
                 {
                     MovieId = 3,
-                    Category = "Sci-fi/Adventure",
+                    CategoryId = 4,
                     Title = "Interstellar",
                     Year = 2014,
                     Director = "Christopher Nolan",

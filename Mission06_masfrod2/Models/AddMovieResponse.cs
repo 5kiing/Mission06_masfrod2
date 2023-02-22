@@ -15,15 +15,13 @@ namespace Mission06_masfrod2.Models
         [Key] // here are data validation fields
         [Required]
         public int MovieId { get; set; }
-        [Required]
-        public string Category { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Must have a Title.")]
         public string Title { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Must have a year.")]
         public ushort Year { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please Enter the Director's first and last name.")]
         public string Director { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Select a rating from the dropdown list.")]
         public string Rating { get; set; }
 
         public bool? Edited { get; set; }
@@ -33,5 +31,9 @@ namespace Mission06_masfrod2.Models
         // this prevents a user from entering more than 25 characters
         [StringLength(25, ErrorMessage = "The {0} value cannot exceed {1} characters. ")] 
         public string Notes { get; set; }
+
+        [Required(ErrorMessage = "The {0} field cannot be left blank.")]
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }
