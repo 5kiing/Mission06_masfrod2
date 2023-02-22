@@ -1,4 +1,7 @@
-﻿@{
+﻿@*// Author: Mason Frodsham masfrod2
+// Mission 7 Assignment*@
+
+@{
     ViewData["Title"] = "Delete Movie";
     ViewData["Head"] = "Confirm Deletion";
 }
@@ -7,9 +10,10 @@
 
 <h3>Are you sure you want to delete the movie, @Model.Title directed by @Model.Director?</h3>
 
+@*Display delete and cancel button. Delete record from database using AddMovieResponse Model.*@
 <form method="post" asp-action="Delete">
     <button type="submit">Delete</button>
     <a asp-controller="Home" asp-action="ListMovies" class="btn btn-primary">Cancel</a>
 
-    <input type="hidden" asp-for="MovieId"/>
+    <input type="hidden" asp-for="MovieId" />
 </form>

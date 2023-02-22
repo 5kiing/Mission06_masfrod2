@@ -1,5 +1,5 @@
 ﻿// Author: Mason Frodsham masfrod2
-// Mission 6 Assignment
+// Mission 7 Assignment
 
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -23,6 +23,7 @@ namespace Mission06_masfrod2.Models
         {
             // seeded data
 
+            // this assigns data to the Category table
             mb.Entity<Category>().HasData(
                 new Category { CategoryId = 1, CategoryName = "Horror" },
                 new Category { CategoryId = 2, CategoryName = "Action/Adventure" },
@@ -31,6 +32,7 @@ namespace Mission06_masfrod2.Models
                 new Category { CategoryId = 5, CategoryName = "Thriller" }
             );
 
+            // This assigns data to the Responses table
             mb.Entity<AddMovieResponse>().HasData(
                 new AddMovieResponse
                 {

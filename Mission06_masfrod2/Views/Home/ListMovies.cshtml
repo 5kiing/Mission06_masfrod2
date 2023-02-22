@@ -1,11 +1,14 @@
-﻿@{
+﻿@*// Author: Mason Frodsham masfrod2
+// Mission 7 Assignment*@
+
+@{
     ViewData["Title"] = "Movie List";
     ViewData["Head"] = "Movie List";
 
 }
 
 @model List<AddMovieResponse>
-
+@*create table to for movie list*@
 <table class="table table-bordered table-striped">
 
     <thead class="font-weight-bold">
@@ -21,8 +24,9 @@
         </tr>
     </thead>
 
-<tbody>
-    @foreach (var x in Model)
+    @*get data from model to fill in each row with the movies in the database*@
+    <tbody>
+        @foreach (var x in Model)
         {
             <tr>
                 <td>@x.Category.CategoryName</td>
@@ -34,11 +38,12 @@
                 <td>@x.LentTo</td>
                 <td>@x.Notes</td>
 
+                @*added edit and delete buttons to the list*@
                 <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@x.MovieId">Edit</a></td>
                 <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@x.MovieId">Delete</a></td>
             </tr>
 
         }
-</tbody>
+    </tbody>
 
 </table>

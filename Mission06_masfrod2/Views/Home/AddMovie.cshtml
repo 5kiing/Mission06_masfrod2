@@ -1,5 +1,5 @@
 ﻿@*// Author: Mason Frodsham masfrod2*@
-@*// Mission 6 Assignment*@
+@*// Mission 7 Assignment*@
 
 @{
     ViewData["Title"] = "Add Movie";
@@ -15,6 +15,7 @@
 
         @*create dropdown list of movie categories*@
 
+        @*Category ViewBag calls the category table and displays dropdown list*@
         <label asp-for="CategoryId">Category:</label>
         <select asp-for="CategoryId">
             <option value="">Select a Category</option>
@@ -56,6 +57,7 @@
 
         <button type="submit">Submit</button>
 
+        @*data validation is included in the HTML*@
         <div asp-validation-summary="All"></div>
     </form>
 </div>

@@ -1,5 +1,5 @@
 ﻿// Author: Mason Frodsham masfrod2
-// Mission 6 Assignment
+// Mission 7 Assignment
 
 using System;
 using System.Collections.Generic;
@@ -32,6 +32,7 @@ namespace Mission06_masfrod2.Models
         [StringLength(25, ErrorMessage = "The {0} value cannot exceed {1} characters. ")] 
         public string Notes { get; set; }
 
+        // Use foreign key of CategoryId to bring category data into movie item.
         [Required(ErrorMessage = "The {0} field cannot be left blank.")]
         public int CategoryId { get; set; }
         public Category Category { get; set; }

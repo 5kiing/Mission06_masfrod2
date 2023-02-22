@@ -1,5 +1,5 @@
 ﻿// Author: Mason Frodsham masfrod2
-// Mission 6 Assignment
+// Mission 7 Assignment
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -75,6 +75,7 @@ namespace Mission06_masfrod2.Controllers
             return View(movies);
         }
 
+        // get page to Edit Movie list
         [HttpGet]
         public IActionResult Edit(int movieid)
         {
@@ -85,6 +86,7 @@ namespace Mission06_masfrod2.Controllers
             return View("AddMovie", movie);
         }
 
+        // post modified edit to the database and return to movie list
         [HttpPost]
         public IActionResult Edit (AddMovieResponse am)
         {
@@ -93,6 +95,7 @@ namespace Mission06_masfrod2.Controllers
             return RedirectToAction("ListMovies");
         }
 
+        // Get movie ID to delete
         [HttpGet]
         public IActionResult Delete (int movieid)
         {
@@ -100,6 +103,7 @@ namespace Mission06_masfrod2.Controllers
             return View(movie);
         }
 
+        // post deletion of Movie ID to database 
         [HttpPost]
         public IActionResult Delete (AddMovieResponse am)
         {
